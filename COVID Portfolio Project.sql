@@ -57,9 +57,16 @@ ORDER BY TotalDeathCount DESC
 
 SELECT date, SUM(new_cases) AS TotalCases , SUM(CAST(new_deaths AS int)) AS TotalDeaths, SUM(CAST(new_deaths AS int))/NULLIF(SUM(new_cases), 0)*100
 	AS DeathPercentage
-FROM CovidPortfolioProject.dbo.CovidDeaths
-WHERE location IS NOT NULL
+FROM CovidPortfolioProject.dbo.CovidDeaths		--Rolling Count
+WHERE continent IS NOT NULL
 GROUP BY date
+ORDER BY 1,2
+
+SELECT SUM(new_cases) AS TotalCases , SUM(CAST(new_deaths AS int)) AS TotalDeaths, SUM(CAST(new_deaths AS int))/NULLIF(SUM(new_cases), 0)*100
+	AS DeathPercentage
+FROM CovidPortfolioProject.dbo.CovidDeaths   		 --Totalled
+WHERE continent IS NOT NULL
+--GROUP BY date
 ORDER BY 1,2
 
 -- Totalled Global Cases, Deaths and Death Rate
