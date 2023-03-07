@@ -32,9 +32,15 @@ ORDER BY 1,2
 SELECT location, population, MAX(total_cases) AS TotalInfectionsCount, (MAX(total_cases)/MAX(population))*100 AS InfectionPercentage
 FROM CovidPortfolioProject.dbo.CovidDeaths
 --WHERE location like '%kingdom'
-WHERE continent is not null
+WHERE continent is not null											--Totalled for each country
 GROUP BY location, population
 ORDER BY InfectionPercentage DESC
+
+Select Location, Population,date, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
+From CovidPortfolioProject..CovidDeaths
+--Where location like '%kingdom'										--Daily
+Group by Location, Population, date
+order by PercentPopulationInfected desc
 
 -- Showing Countries Total Death Count and Death Rates (Highest Death count/ Population) in Descending Order
 
