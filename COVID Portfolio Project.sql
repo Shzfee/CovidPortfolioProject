@@ -47,7 +47,7 @@ ORDER BY DeathRate DESC
 
 -- Showing Continents Death Count
 
-SELECT continent, MAX(CAST(total_deaths AS int)) AS TotalDeathCount
+SELECT continent, SUM(CAST(new_deaths AS int)) AS TotalDeathCount
 FROM CovidPortfolioProject.dbo.CovidDeaths
 WHERE  continent is not null
 GROUP BY continent
