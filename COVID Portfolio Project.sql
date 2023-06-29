@@ -162,4 +162,4 @@ WHERE Deaths.continent IS NOT NULL
 SELECT *
 FROM PercentOfPopulationVaccinated
 
-
+--Visualisation: https://public.tableau.com/app/profile/shafee.uddin/viz/CovidProjectDashboard_16782016755930/Dashboard1 
